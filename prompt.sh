@@ -6,6 +6,8 @@
 #
 docker run --rm -ti \
   -p 9080:9080 \
+  -v $(pwd):/opt/app \
+  -w /opt/app \
   -e TERM=xterm \
-  vertigo/liberty-exemplo bash
-
+  -v $HOME/.m2:/root/.m2 \
+  vertigo/maven-ibmjava bash
