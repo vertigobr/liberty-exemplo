@@ -1,12 +1,12 @@
 
 FROM maven as builder
 RUN mkdir -p /opt/app
-COPY pom.xml /opr/app/
-COPY src /opr/app/
-WORKDIR /opr/app/
+COPY pom.xml /opt/app/
+COPY src /opt/app/
+WORKDIR /opt/app/
 RUN mvn install
 
 FROM websphere-liberty:webProfile7
-COPY --from=builder /opr/app/target/liberty/wlp/usr/servers/defaultServer /config/
+COPY --from=builder /opt/app/target/liberty/wlp/usr/servers/defaultServer /config/
 # Install required features if not present
 RUN installUtility install --acceptLicense defaultServer
