@@ -2,5 +2,6 @@
 FROM websphere-liberty:webProfile7
 # Install required features if not present
 RUN installUtility install --acceptLicense --downloadDependencies=true JDBCSample
+RUN sed 's/9120/9120\" host=\"\*/g' -i /opt/ibm/wlp/usr/servers/JDBCSample/server.xml
 CMD ["/opt/ibm/docker/docker-server", "run", "JDBCSample"]
 EXPOSE 9120
