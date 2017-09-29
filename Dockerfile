@@ -7,6 +7,6 @@ WORKDIR /opr/app/
 RUN mvn install
 
 FROM websphere-liberty:webProfile7
-COPY --from=builder /target/liberty/wlp/usr/servers/defaultServer /config/
+COPY --from=builder /opr/app/target/liberty/wlp/usr/servers/defaultServer /config/
 # Install required features if not present
 RUN installUtility install --acceptLicense defaultServer
