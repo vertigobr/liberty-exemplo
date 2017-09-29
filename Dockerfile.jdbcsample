@@ -1,0 +1,4 @@
+
+FROM websphere-liberty:webProfile7
+# Install required features if not present
+RUN installUtility install --acceptLicense --downloadDependencies=true JDBCSample
