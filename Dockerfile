@@ -2,7 +2,7 @@
 FROM maven as builder
 RUN mkdir -p /opt/app
 COPY pom.xml /opt/app/
-COPY src /opt/app/
+COPY src /opt/app/src
 WORKDIR /opt/app/
 RUN mvn install
 
